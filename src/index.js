@@ -19,6 +19,13 @@ class Board extends React.Component {
     };
   }
 
+restartGame() {
+  this.setState({  
+    squares: Array(9).fill(null),
+    xIsNext: true,
+  });
+}
+
   handleClick(i) {
     const squares = this.state.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
@@ -67,6 +74,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        <button onClick={() => this.restartGame()}>Reset</button>
       </div>
     );
   }
